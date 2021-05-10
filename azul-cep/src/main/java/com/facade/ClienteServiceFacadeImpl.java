@@ -2,6 +2,7 @@ package com.facade;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -21,13 +22,17 @@ public class ClienteServiceFacadeImpl implements ClienteServiceFacade {
 	@PersistenceContext
 	EntityManager em;
 	
-	
 	/**
 	 *{@inheritDoc}
 	 */
 	@Override
 	public void cadastrarCliente(Cliente cliente) {
-		clienteRepository.save(cliente);
+		
+		try {
+			clienteRepository.save(cliente);	
+		}catch (PersistenceException e) {
+			System.out.printf("Ocorreu um erro inesperado. Favor tente novamente mais tarde", e.getMessage());
+		}
 	}
 
 	/**

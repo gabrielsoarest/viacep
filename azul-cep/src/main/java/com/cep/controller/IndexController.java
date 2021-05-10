@@ -39,6 +39,8 @@ public class IndexController {
 				cliente.setCep(endereco.getCep());
 				clienteService.cadastrarCliente(cliente);
 				System.out.println("Cliente cadastrado");
+			} else {
+				System.out.println("Ocorreu um erro inesperado");
 			}
 			
 		} else {
