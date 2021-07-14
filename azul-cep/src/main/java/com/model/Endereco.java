@@ -30,8 +30,6 @@ public class Endereco implements Serializable {
 		return cep;
 	}
 
-
-
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
